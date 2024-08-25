@@ -6,7 +6,7 @@
  */
 
 
-#pragma config FOSC = EXTRC_CLKOUT// Oscillator Selection bits (RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
+#pragma config FOSC = INTRC_CLKOUT// Oscillator Selection bits (RC oscillator: CLKOUT function on RA6/OSC2/CLKOUT pin, RC on RA7/OSC1/CLKIN)
 #pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
 #pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
 #pragma config MCLRE = ON       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
@@ -28,13 +28,45 @@
 #include <pic16f887.h>
 #include "driver_lib.h"
 
+volatile uint8_t secondsPassed = 0;
+volatile uint16_t timerCnt = 0;
+
+volatile uint8_t timerTriggered = STD_LOW;
+
+void __interrupt() interruptHandler(void) {
+    if (INTCONbits.TMR0IF) {
+        INTCONbits.TMR0IF = 0;  // Clear the interrupt flag
+        
+        timerTriggered = STD_HIGH;
+        
+        TMR0 = 0;               // Reset Timer0
+    }
+}
+
 void main(void) {
     port_t port = PortA;
-    uint8_t ledPin = 1;
     
-    configurePinDirection(PortA, ledPin, PIN_DIR_OUT);
-    setPinOutput(PortA, ledPin, STD_HIGH);
+    uint8_t ledPin = 0;
+    uint8_t timerPin = 1;
+    
+    setup_timer0();
+    enable_interrupts();
+    
+    configurePinDirection(port, ledPin, PIN_DIR_OUT);
+    configurePinDirection(port, timerPin, PIN_DIR_OUT);
+    
+    setPinOutput(port, ledPin, STD_HIGH);
     
     while(1) {
+        if(timerTriggered == STD_HIGH) {
+            timerTriggered = STD_LOW;
+            timerCnt++;
+            
+            if(timerCnt == TMR_CNT_SEC) {
+                timerCnt = 0;
+                
+                togglePin(port, timerPin);
+            }
+        }
     }
 }

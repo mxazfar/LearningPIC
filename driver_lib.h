@@ -23,6 +23,8 @@ extern "C" {
 #define PIN_DIR_IN  0x00
 #define PIN_DIR_OUT 0x01
     
+#define TMR_CNT_SEC 9008U
+    
 typedef enum {
     PortA,
     PortB,
@@ -34,6 +36,11 @@ typedef enum {
 
 void configurePinDirection(port_t port, uint8_t pin, uint8_t direction);
 void setPinOutput(port_t port, uint8_t pin, uint8_t level);
+void togglePin(port_t port, uint8_t pin);
+
+void setup_timer0(void);
+
+void enable_interrupts(void);
 
 
 #ifdef	__cplusplus

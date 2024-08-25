@@ -43,19 +43,12 @@ void __interrupt() interruptHandler(void) {
     }
 }
 
-void main(void) {
-    port_t port = PortA;
-    
-    uint8_t ledPin = 0;
-    uint8_t timerPin = 1;
-    
+void main(void) {   
     start_timer0();
     enable_interrupts();
     
-    configurePinDirection(port, ledPin, PIN_DIR_OUT);
-    configurePinDirection(port, timerPin, PIN_DIR_OUT);
-    
-    setPinOutput(port, ledPin, STD_HIGH);
+    configurePinDirection(PortB, Pin7, PIN_DIR_OUT);
+    configurePinDirection(PortB, Pin0, PIN_DIR_OUT);
     
     while(1) {
         if(timerTriggered == STD_HIGH) {
@@ -65,7 +58,8 @@ void main(void) {
             if(timerCnt == TMR_CNT_SEC) {
                 timerCnt = 0;
                 
-                togglePin(port, timerPin);
+                togglePin(PortB, Pin7);
+                togglePin(PortB, Pin0);
             }
         }
     }

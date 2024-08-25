@@ -34,9 +34,21 @@ typedef enum {
     PortNum
 } port_t;
 
-void configurePinDirection(port_t port, uint8_t pin, uint8_t direction);
-void setPinOutput(port_t port, uint8_t pin, uint8_t level);
-void togglePin(port_t port, uint8_t pin);
+typedef enum {
+    Pin0,
+    Pin1,
+    Pin2,
+    Pin3,
+    Pin4,
+    Pin5,
+    Pin6,
+    Pin7,
+    PinNum
+} pin_t;
+
+void configurePinDirection(port_t port, pin_t pin, uint8_t direction);
+void setPinOutput(port_t port, pin_t pin, uint8_t level);
+void togglePin(port_t port, pin_t pin);
 
 void start_timer0(void);
 

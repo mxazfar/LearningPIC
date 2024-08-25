@@ -13,7 +13,7 @@
 
 #include "driver_lib.h"
 
-void configurePinDirection(port_t port, uint8_t pin, uint8_t direction) {
+void configurePinDirection(port_t port, pin_t pin, uint8_t direction) {
     uint8_t bitmask = (0x01 << pin);
     
     switch(direction) {
@@ -26,7 +26,7 @@ void configurePinDirection(port_t port, uint8_t pin, uint8_t direction) {
     }
 }
 
-void setPinOutput(port_t port, uint8_t pin, uint8_t level) {
+void setPinOutput(port_t port, pin_t pin, uint8_t level) {
     uint8_t bitmask = (0x01 << pin);
     
     switch(level) {
@@ -38,7 +38,7 @@ void setPinOutput(port_t port, uint8_t pin, uint8_t level) {
     }
 }
 
-void togglePin(port_t port, uint8_t pin) {
+void togglePin(port_t port, pin_t pin) {
     uint8_t bitmask = (0x01 << pin);
     
     GET_PORT_ADDR(port) ^= bitmask;

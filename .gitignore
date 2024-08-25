@@ -1,2 +1,5 @@
 build/
 debug/
+dist/
+settings.json
+.DS_STORE

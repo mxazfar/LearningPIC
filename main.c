@@ -49,7 +49,7 @@ void main(void) {
     uint8_t ledPin = 0;
     uint8_t timerPin = 1;
     
-    setup_timer0();
+    start_timer0();
     enable_interrupts();
     
     configurePinDirection(port, ledPin, PIN_DIR_OUT);

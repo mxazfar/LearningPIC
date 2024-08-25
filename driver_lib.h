@@ -38,7 +38,7 @@ void configurePinDirection(port_t port, uint8_t pin, uint8_t direction);
 void setPinOutput(port_t port, uint8_t pin, uint8_t level);
 void togglePin(port_t port, uint8_t pin);
 
-void setup_timer0(void);
+void start_timer0(void);
 
 void enable_interrupts(void);
 

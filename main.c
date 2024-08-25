@@ -26,11 +26,14 @@
 
 #include <xc.h>
 #include <pic16f887.h>
+#include "driver_lib.h"
 
 void main(void) {
-    // Clear first bit of TRISA to ensure output
-    TRISA &= ~0x01;
-    PORTA |= 0x01;
+    port_t port = PortA;
+    uint8_t ledPin = 1;
+    
+    configurePinDirection(PortA, ledPin, PIN_DIR_OUT);
+    setPinOutput(PortA, ledPin, STD_HIGH);
     
     while(1) {
     }

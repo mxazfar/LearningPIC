@@ -3,6 +3,24 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
+"32 /Users/mazfar/MPLABXProjects/Learning PIC.X/main.c
+[e E1420 . `uc
+PortA 0
+PortB 1
+PortC 2
+PortD 3
+PortE 4
+PortNum 5
+]
+"16 /Users/mazfar/MPLABXProjects/Learning PIC.X/driver_lib.c
+[e E1420 . `uc
+PortA 0
+PortB 1
+PortC 2
+PortD 3
+PortE 4
+PortNum 5
+]
 "10 /Applications/microchip/xc8/v2.46/pic/sources/c99/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "4 /Applications/microchip/xc8/v2.46/pic/sources/c99/common/Umul8_16.c
@@ -11,14 +29,39 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"30 /Users/mazfar/MPLABXProjects/Learning PIC.X/main.c
+"16 /Users/mazfar/MPLABXProjects/Learning PIC.X/driver_lib.c
+[v _configurePinDirection configurePinDirection `(v  1 e 1 0 ]
+"27
+[v _setPinOutput setPinOutput `(v  1 e 1 0 ]
+"31 /Users/mazfar/MPLABXProjects/Learning PIC.X/main.c
 [v _main main `(v  1 e 1 0 ]
-"166 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8/pic/include/proc/pic16f887.h
-[v _PORTA PORTA `VEuc  1 e 1 @5 ]
-"1416
-[v _TRISA TRISA `VEuc  1 e 1 @133 ]
-"30 /Users/mazfar/MPLABXProjects/Learning PIC.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
+"40
+} 0
+"27 /Users/mazfar/MPLABXProjects/Learning PIC.X/driver_lib.c
+[v _setPinOutput setPinOutput `(v  1 e 1 0 ]
+{
+[v setPinOutput@port port `E1420  1 a 1 wreg ]
+"28
+[v setPinOutput@bitmask bitmask `uc  1 a 1 6 ]
+"27
+[v setPinOutput@port port `E1420  1 a 1 wreg ]
+[v setPinOutput@pin pin `uc  1 p 1 0 ]
+[v setPinOutput@level level `uc  1 p 1 1 ]
+[v setPinOutput@port port `E1420  1 a 1 5 ]
 "37
+} 0
+"16
+[v _configurePinDirection configurePinDirection `(v  1 e 1 0 ]
+{
+[v configurePinDirection@port port `E1420  1 a 1 wreg ]
+"17
+[v configurePinDirection@bitmask bitmask `uc  1 a 1 6 ]
+"16
+[v configurePinDirection@port port `E1420  1 a 1 wreg ]
+[v configurePinDirection@pin pin `uc  1 p 1 0 ]
+[v configurePinDirection@direction direction `uc  1 p 1 1 ]
+[v configurePinDirection@port port `E1420  1 a 1 5 ]
+"25
 } 0
